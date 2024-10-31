@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    
+
+
+    <style>
+        .imgp {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden;
+    margin-top: 20px;
+    margin-left: auto;
+    border: 5px solid transparent; /* Borde para degradado */
+
+    /* Borde con degradado */
+    
+    /* Sombra para el efecto 3D */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    
+    /* Efecto de transformación al pasar el cursor */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imgp:hover {
+    /* Efecto de levantar la imagen */
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+}
+        .imgp2 {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden;
+    margin-top: 20px;
+    margin-left: auto;
+    border: 5px solid transparent; /* Borde para degradado */
+
+    
+    
+    /* Efecto de transformación al pasar el cursor */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imgp2:hover {
+    /* Efecto de levantar la imagen */
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.img2 {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden;
+    margin-top: 20px;
+    margin-left: auto;
+    border: 5px solid transparent; /* Borde para degradado */
+
+    
+
+    /* Sombra para el efecto 3D */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    
+    /* Efecto de transformación al pasar el cursor */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img2:hover {
+    /* Efecto de levantar la imagen */
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+}
+.img3 {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden;
+    margin-top: 20px;
+    margin-left: auto;
+    border: 5px solid transparent; /* Borde para degradado */
+
+    
+
+    /* Sombra para el efecto 3D */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    
+    /* Efecto de transformación al pasar el cursor */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img3:hover {
+    /* Efecto de levantar la imagen */
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+      /* Estilos generales del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: #252e2c;
+    border-radius: 15px;
+    padding: 30px;
+    width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+    text-align: left;
+}
+
+/* Encabezado del modal */
+.modal-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Botón de cierre */
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cerrar:hover {
+    color: red;
+}
+
+/* Contenedor de objetivos en columnas */
+.objetivos-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 10px;
+}
+
+.objetivos-container p {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Galería */
+.proyecto {
+    cursor: pointer;
+    position: relative;
+}
+
+.proyecto img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proyecto:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 0 0 10px 10px;
+}
+/* Estilo para organizar el contenido en columna */
+.container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Espacio entre los elementos */
+            max-width: 600px;
+            margin: 0 auto; /* Centrar el contenedor */
+            padding: 20px;
+        }
+
+        /* Estilo para cada elemento */
+        .content-box {
+            padding: 20px;
+            background-color: #1e2326;
+            border: 1px solid #1e2326;
+            text-align: center;
+            font-size: 18px;
+        }
+        /* Estilo para organizar el contenido en columna */
+.container1 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Espacio entre los elementos */
+            max-width: 600px;
+            margin: 0 auto; /* Centrar el contenedor */
+            padding: 20px;
+        }
+
+        /* Estilo para cada elemento */
+        .content-box1 {
+            padding: 20px;
+            background-color: #1e2326;
+            border: 1px solid #1e2326;
+            text-align: center;
+            font-size: 18px;
+        }
+
+/* Animación para el modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skill p {
+    margin-bottom: 10px; /* Ajusta el valor según el espacio que necesites */
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- MENU ENCABEZADO -->
+    <div class="contenedor-header">
+        <header>
+            <div class="logo">
+                <a href="#">Javi</a>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
+                    <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
+                    <li><a href="#skills" onclick="seleccionar()">HABILIDADES</a></li>
+                    <li><a href="#proyectos" onclick="seleccionar()">PROYECTOS</a></li>
+                    <li><a href="#curriculum" onclick="seleccionar()">CURRICULUM</a></li>
+                    <li><a href="#portfolio" onclick="seleccionar()">OBJETIVOS</a></li>
+                    <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
+                </ul>
+            </nav>
+            <div class="nav-responsive" onclick="mostrarOcultarMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+    </div>
+
+    <!-- SECCION INICIO -->
+    <!-- Comienzo de la sección de inicio -->
+<section id="inicio" class="inicio">
+    <!-- Contenedor del banner que incluye la imagen y el texto -->
+    <div class="contenido-banner">
+        <!-- Contenedor para la imagen -->
+        <div class="contenedor-img">
+            <!-- Imagen de Javier -->
+            <img src="img/Javier.jpg" alt="">
+        </div>
+        <!-- Título principal con el nombre -->
+        <h1>JAVIER MEJIA</h1>
+        <!-- Subtítulo con la especialidad o título -->
+        <h2>BTPI</h2>
+    </div> <!-- Fin del contenedor del banner -->
+</section> <!-- Fin de la sección de inicio -->
+
+
+    <!-- SECCION SOBRE MI -->
+    <!-- Sección principal con ID "sobremi" y clase "sobremi" para estilos específicos -->
+<section id="sobremi" class="sobremi">
+    <!-- Contenedor para todo el contenido de la sección -->
+    <div class="contenido-seccion">
+        <!-- Título de la sección "Sobre Mí" -->
+        <h2>Sobre Mí</h2>
+        
+        <!-- Párrafo de introducción con información básica -->
+        <p>
+            <!-- Texto destacado con el nombre dentro de una etiqueta <span> -->
+            <span>Hola, soy Javier Mejia.</span>
+            Soy una persona muy alegre y amigable, me gusta mucho la informática, también el fútbol.
+            Mi equipo europeo favorito es el Real Madrid. Tengo 20 años de edad, un placer.
+        </p>
+
+        <!-- Contenedor para organizar los datos personales en fila -->
+        <div class="fila">
+            <!-- Primera columna: Datos personales -->
+            <div class="col">
+                <!-- Subtítulo "Datos Personales" -->
+                <h3>Datos Personales</h3>
+                
+                <!-- Lista no ordenada para mostrar los datos personales -->
+                <ul>
+                    <!-- Elemento de lista para la fecha de cumpleaños -->
+                    <li>
+                        <strong>Cumpleaños</strong> <!-- Nombre del dato en negrita -->
+                        12-08 <!-- Valor del cumpleaños -->
+                    </li>
+                    
+                    <!-- Elemento de lista para el número de teléfono -->
+                    <li>
+                        <strong>Teléfono</strong> 
+                        3356-5874 <!-- Valor del teléfono -->
+                    </li>
+                    
+                    <!-- Elemento de lista para el email -->
+                    <li>
+                        <strong>Email</strong> 
+                        mejiajavi446@gmail.com <!-- Valor del email -->
+                    </li>
+                    
+                    <!-- Elemento de lista para el sitio web -->
+                    <li>
+                        <strong>Website</strong> 
+                        www.javi.com <!-- Valor del sitio web -->
+                    </li>
+                    
+                    <!-- Elemento de lista para la dirección -->
+                    <li>
+                        <strong>Dirección</strong> 
+                        Brisas del plan, San Manuel, Cortes <!-- Valor de la dirección -->
+                    </li>
+                    
+                    <!-- Elemento de lista para la carrera -->
+                    <li>
+                        <strong>Carrera</strong> 
+                        <span>Bachillerato Técnico Profesional en Informática</span> <!-- Valor de la carrera, dentro de un <span> para estilos adicionales -->
+                    </li>
+                </ul> <!-- Fin de la lista de datos personales -->
+            </div> <!-- Fin de la columna de datos personales -->
+
+            <!-- Segunda columna: Intereses -->
+            <div class="col">
+                <!-- Subtítulo "Intereses" -->
+                <h3>Intereses</h3>
+                
+                <!-- Contenedor para los intereses -->
+                <div class="contenedor-intereses">
+                    <!-- Cada interés está representado por un div -->
+                    <div class="interes">
+                        <i class="fa-solid fa-gamepad"></i> <!-- Icono de videojuegos -->
+                        <span>JUEGOS</span> <!-- Nombre del interés -->
+                    </div>
+                    
+                    <div class="interes">
+                        <i class="fa-solid fa-headphones"></i> <!-- Icono de música -->
+                        <span>MUSICA</span> <!-- Nombre del interés -->
+                    </div>
+                    
+                    <div class="interes">
+                        <i class="fa-solid fa-plane"></i> <!-- Icono de viaje -->
+                        <span>VIAJAR</span> <!-- Nombre del interés -->
+                    </div>
+                    
+                    <div class="interes">
+                        <i class="fa-solid fa-person-hiking"></i> <!-- Icono de deporte -->
+                        <span>DEPORTE</span> <!-- Nombre del interés -->
+                    </div>
+                    
+                    <div class="interes">
+                        <i class="fa-solid fa-code"></i> <!-- Icono de programación -->
+                        <span>PROGRAMACIÓN</span> <!-- Nombre del interés -->
+                    </div>
+                    
+                    <div class="interes">
+                        <i class="fa-solid fa-code-branch"></i> <!-- Icono de HTML -->
+                        <span>HTML</span> <!-- Nombre del interés -->
+                    </div>
+                    
+                    <div class="interes">
+                        <i class="fa-solid fa-palette"></i> <!-- Icono de Photoshop -->
+                        <span>PHOTOSHOP</span> <!-- Nombre del interés -->
+                    </div>
+                    
+                    <div class="interes">
+                        <i class="fa-solid fa-network-wired"></i> <!-- Icono de redes -->
+                        <span>REDES</span> <!-- Nombre del interés -->
+                    </div>
+                </div> <!-- Fin del contenedor de intereses -->
+            </div> <!-- Fin de la columna de intereses -->
+        </div> <!-- Fin de la fila -->
+    </div> <!-- Fin del contenedor de contenido de la sección -->
+</section> <!-- Fin de la sección "Sobre Mí" -->
+
+
+    <!-- SECCION SKILLS -->
+    <!-- Sección principal para habilidades con clase "skills" y ID "skills" -->
+<section class="skills" id="skills">
+    <!-- Contenedor para todo el contenido de la sección -->
+    <div class="contenido-seccion">
+        <!-- Título de la sección "Habilidades" -->
+        <h2>Habilidades</h2>
+        
+        <!-- Contenedor para organizar habilidades en filas -->
+        <div class="fila">
+            <!-- Primera columna: Habilidades técnicas -->
+            <div class="col">
+                <!-- Subtítulo "Habilidades técnicas" -->
+                <h3>Habilidades técnicas</h3>
+                
+                <!-- Habilidad técnica: Javascript -->
+                <div class="skill">
+                    <span>Javascript</span> <!-- Nombre de la habilidad -->
+                    <p>Lenguaje de programación utilizado principalmente para desarrollo web, agregando interactividad y dinamismo a las páginas.</p> <!-- Descripción de la habilidad -->
+                    <div class="barra-skill"> <!-- Contenedor de la barra de progreso -->
+                        <div class="progreso"> <!-- Barra de progreso -->
+                            <span>30%</span> <!-- Porcentaje de habilidad -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habilidad técnica: HTML & CSS -->
+                <div class="skill">
+                    <span>HTML & CSS</span>
+                    <p>Lenguajes de marcado y estilo para estructurar y diseñar páginas web de manera visualmente atractiva y funcional.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>90%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habilidad técnica: Photoshop -->
+                <div class="skill">
+                    <span>Photoshop</span>
+                    <p>Herramienta de edición de imágenes para crear y modificar gráficos, fotografías y contenido visual profesional.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>40%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habilidad técnica: Excel -->
+                <div class="skill">
+                    <span>Excel</span>
+                    <p>Software de hojas de cálculo utilizado para análisis de datos, gestión y visualización de información en tablas.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>50%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habilidad técnica: Programación -->
+                <div class="skill">
+                    <span>Programacion</span>
+                    <p>Habilidad para escribir código en diversos lenguajes, desarrollando software y aplicaciones que resuelven problemas.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>55%</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div> <!-- Fin de la columna de habilidades técnicas -->
+
+            <!-- Segunda columna: Habilidades profesionales -->
+            <div class="col">
+                <!-- Subtítulo "Habilidades profesionales" -->
+                <h3>Habilidades profesionales</h3>
+                
+                <!-- Habilidad profesional: Comunicación -->
+                <div class="skill">
+                    <span>Comunicación</span>
+                    <p>Tengo la capacidad para expresar ideas y escuchar a los demás de manera clara y efectiva, facilitando el entendimiento mutuo.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habilidad profesional: Trabajo en equipo -->
+                <div class="skill">
+                    <span>Trabajo en Equipo</span>
+                    <p>Tengo la habilidad para colaborar con otros, contribuyendo al logro de objetivos comunes de manera armoniosa y eficiente.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habilidad profesional: Creatividad -->
+                <div class="skill">
+                    <span>Creatividad</span>
+                    <p>Cuento con la capacidad para generar ideas innovadoras y soluciones originales ante problemas o desafíos.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habilidad profesional: Puntualidad -->
+                <div class="skill">
+                    <span>Puntualidad</span>
+                    <p>Puedo cumplir con horarios y plazos establecidos, mostrando responsabilidad y respeto por el tiempo de los demás.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Habilidad profesional: Dedicación -->
+                <div class="skill">
+                    <span>Dedicación</span>
+                    <p>Soy una persona que se compromete y esfuerza constantemente para alcanzar metas, mostrando perseverancia y enfoque en el trabajo.</p>
+                    <div class="barra-skill">
+                        <div class="progreso">
+                            <span>100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Fin de la columna de habilidades profesionales -->
+        </div> <!-- Fin de la fila -->
+    </div> <!-- Fin del contenedor de contenido de la sección -->
+</section> <!-- Fin de la sección de habilidades -->
+
+
+    <!-- SECCION PROYECTOS -->
+    <!-- Sección principal para proyectos con ID "proyectos" y clase "proyectos" -->
+<section id="proyectos" class="proyectos">
+    <!-- Contenedor para todo el contenido de la sección -->
+    <div class="contenido-seccion">
+        <!-- Título de la sección "Proyectos" -->
+        <h2>Proyectos</h2>
+        
+        <!-- Contenedor para organizar los proyectos en filas -->
+        <div class="fila">
+            <!-- Contenedor para el primer y tercer proyecto -->
+            <div class="container1">
+                <!-- Caja de contenido para el Proyecto #1 -->
+                <div class="content-box">
+                    <h3>Proyecto #1</h3> <!-- Título del proyecto -->
+                    <div class="item izq"> <!-- Contenedor para los detalles del proyecto, alineado a la izquierda -->
+                        <h4>Sistema de votacion</h4> <!-- Subtítulo del proyecto -->
+                        <span class="casa">VISUAL BASIC 2019</span> <!-- Tecnología utilizada -->
+                        <span class="fecha">2024</span> <!-- Año del proyecto -->
+                        <p>Realice un sistema de votacion para mi colegio con Visual Basic el proyecto tiene 5 formularios, el principal con un mensaje de bienvenida, el segundo, donde se registran los presidentes y sus planillas, el tercero donde vota, el cuarto donde se ingresa mediante un login y el ultimo donde se muestra el resultado de las votaciones.</p> <!-- Descripción del proyecto -->
+                        <div class="conectori"> <!-- Contenedor para un conector visual -->
+                            <div class="circuloi"></div> <!-- Elemento gráfico del conector -->
+                        </div>
+                    </div>
+                    <!-- Imágenes relacionadas al Proyecto #1 -->
+                    <img class="img2" src="img/bandicam 2024-10-03 11-19-58-928.jpg" alt=""> <!-- Imagen 1 -->
+                    <img class="img3" src="img/bandicam 2024-10-03 11-19-29-279.jpg" alt=""> <!-- Imagen 2 -->
+                </div>
+                
+                <!-- Caja de contenido para el Proyecto #3 -->
+                <div class="content-box1">
+                    <h3>Proyecto #3</h3> <!-- Título del proyecto -->
+                    <div class="item izq"> <!-- Contenedor para los detalles del proyecto, alineado a la izquierda -->
+                        <h4>Pagina Web</h4> <!-- Subtítulo del proyecto -->
+                        <span class="casa">HTML Y CSS</span> <!-- Tecnología utilizada -->
+                        <span class="fecha">2024</span> <!-- Año del proyecto -->
+                        <p>Realice una pagina web de cristiano ronaldo donde sale una tabla con todos sus datos como jugar esto lo realice con un curso de SERGICODE donde me enseño a utilizar html y csss.</p> <!-- Descripción del proyecto -->
+                        <div class="conectori"> <!-- Contenedor para un conector visual -->
+                            <div class="circuloi"></div> <!-- Elemento gráfico del conector -->
+                        </div>
+                    </div>
+                    <!-- Imágenes relacionadas al Proyecto #3 -->
+                    <img class="imgp" src="img/bandicam 2024-10-24 20-09-17-211.jpg" alt=""> <!-- Imagen 1 -->
+                    <img class="imgp2" src="img/bandicam 2024-10-24 20-09-21-688.jpg" alt=""> <!-- Imagen 2 -->
+                </div>
+            </div> <!-- Fin del contenedor para el primer y tercer proyecto -->
+            
+            <!-- Contenedor para el segundo y cuarto proyecto -->
+            <div class="container">
+                <!-- Caja de contenido para el Proyecto #2 -->
+                <div class="content-box">
+                    <h3>Proyecto #2</h3> <!-- Título del proyecto -->
+                    <div class="item der"> <!-- Contenedor para los detalles del proyecto, alineado a la derecha -->
+                        <h4>Pagina Web</h4> <!-- Subtítulo del proyecto -->
+                        <span class="casa">HTML Y CSS</span> <!-- Tecnología utilizada -->
+                        <span class="fecha">2024</span> <!-- Año del proyecto -->
+                        <p>Realice una pagina web de mascotas donde se muestra una variedad de mascotas la pagina es responsiva quiere decir que se adapta tanto a ordenadores como a celulares.</p> <!-- Descripción del proyecto -->
+                        <div class="conectord"> <!-- Contenedor para un conector visual -->
+                            <div class="circulod"></div> <!-- Elemento gráfico del conector -->
+                        </div>
+                    </div>
+                    <!-- Imágenes relacionadas al Proyecto #2 -->
+                    <img class="img2" src="img/bandicam 2024-10-03 12-02-27-292.jpg" alt=""> <!-- Imagen 1 -->
+                    <img class="img3" src="img/bandicam 2024-10-03 12-02-22-840.jpg" alt=""> <!-- Imagen 2 -->
+                </div>
+                
+                <!-- Caja de contenido para el Proyecto #4 -->
+                <div class="content-box">
+                    <h3>Proyecto #4</h3> <!-- Título del proyecto -->
+                    <div class="item der"> <!-- Contenedor para los detalles del proyecto, alineado a la derecha -->
+                        <h4>Pagina Web</h4> <!-- Subtítulo del proyecto -->
+                        <span class="casa">HTML Y CSS</span> <!-- Tecnología utilizada -->
+                        <span class="fecha">2024</span> <!-- Año del proyecto -->
+                        <p>Realice una pagina web de cristiano ronaldo donde sale una tabla con todos sus datos como jugar esto lo realice con un curso de SERGICODE donde me enseño a utilizar html y csss.</p> <!-- Descripción del proyecto -->
+                        <div class="conectord"> <!-- Contenedor para un conector visual -->
+                            <div class="circulod"></div> <!-- Elemento gráfico del conector -->
+                        </div>
+                    </div>
+                    <!-- Imágenes relacionadas al Proyecto #4 -->
+                    <img class="imgp" src="img/bandicam 2024-10-24 20-07-54-826.jpg" alt=""> <!-- Imagen 1 -->
+                    <img class="imgp2" src="img/bandicam 2024-10-24 20-08-05-011.jpg" alt=""> <!-- Imagen 2 -->
+                </div>
+            </div> <!-- Fin del contenedor para el segundo y cuarto proyecto -->
+        </div> <!-- Fin de la fila -->
+    </div> <!-- Fin del contenedor de contenido de la sección -->
+</section> <!-- Fin de la sección de proyectos -->
+
+
+    <!-- SECCION CURRICULUM -->
+    <!-- Sección principal para el currículum con ID "curriculum" y clase "curriculum" -->
+<section id="curriculum" class="curriculum">
+    <!-- Contenedor para todo el contenido de la sección -->
+    <div class="contenido-seccion">
+        <!-- Título de la sección "Curriculum" -->
+        <h2>Curriculum</h2>
+        
+        <!-- Contenedor para organizar la educación y la experiencia laboral en filas -->
+        <div class="fila">
+            <!-- Columna izquierda para la educación -->
+            <div class="col izquierda">
+                <h3>Educación</h3> <!-- Título de la subsección -->
+                
+                <!-- Item de educación para la primaria -->
+                <div class="item izq">
+                    <h4>Primaria</h4> <!-- Subtítulo del nivel educativo -->
+                    <span class="casa">Centro de Educaion Bascia No Gubernamental Jasama</span> <!-- Institución educativa -->
+                    <span class="fecha">2011 - 2015</span> <!-- Rango de años de educación -->
+                    <p>Del 2011 al 2015 realice lo que es mi educacion primaria que es de primer grado a sexto.</p> <!-- Descripción del item -->
+                    <div class="conectori"> <!-- Contenedor para un conector visual -->
+                        <div class="circuloi"></div> <!-- Elemento gráfico del conector -->
+                    </div>
+                </div>
+                
+                <!-- Item de educación para la secundaria -->
+                <div class="item izq">
+                    <h4>Secundaria</h4> <!-- Subtítulo del nivel educativo -->
+                    <span class="casa">Centro de Educaion Bascia No Gubernamental Jasama</span> <!-- Institución educativa -->
+                    <span class="fecha">2016 - 2019</span> <!-- Rango de años de educación -->
+                    <p>Del 2016 al 2019 realice mi secundaria (Colegio) que es de septimo a noveno grado.</p> <!-- Descripción del item -->
+                    <div class="conectori"> <!-- Contenedor para un conector visual -->
+                        <div class="circuloi"></div> <!-- Elemento gráfico del conector -->
+                    </div>
+                </div>
+                
+                <!-- Item de educación para la carrera -->
+                <div class="item izq">
+                    <h4>Carrera</h4> <!-- Subtítulo del nivel educativo -->
+                    <span class="casa">Centro de Educaion Bascia No Gubernamental Jasama</span> <!-- Institución educativa -->
+                    <span class="fecha">2021 - 2024</span> <!-- Rango de años de educación -->
+                    <p>Del 2021 al 2024 realice mi carrera que es Bachillerato Tecnico Profesional en Informatica.</p> <!-- Descripción del item -->
+                    <div class="conectori"> <!-- Contenedor para un conector visual -->
+                        <div class="circuloi"></div> <!-- Elemento gráfico del conector -->
+                    </div>
+                </div>
+            </div> <!-- Fin de la columna izquierda -->
+            
+            <!-- Columna derecha para la experiencia laboral -->
+            <div class="col derecha">
+                <h3>Experiencia de trabajo</h3> <!-- Título de la subsección -->
+                
+                <!-- Item de experiencia laboral para la práctica -->
+                <div class="item der">
+                    <h4>Practica</h4> <!-- Subtítulo del tipo de experiencia -->
+                    <span class="casa">Banco del Pais</span> <!-- Empresa donde se realizó la práctica -->
+                    <span class="fecha">2024</span> <!-- Año de la experiencia -->
+                    <p>Realice mi practica profesional en el banco del pais, durante mi practica realice un gran numero de actividades que llevo a obtener un gran conocimiento.</p> <!-- Descripción del item -->
+                    <div class="conectord"> <!-- Contenedor para un conector visual -->
+                        <div class="circulod"></div> <!-- Elemento gráfico del conector -->
+                    </div>
+                </div> <!-- Fin del item de experiencia laboral -->
+                
+            </div> <!-- Fin de la columna derecha -->
+        </div> <!-- Fin de la fila -->
+    </div> <!-- Fin del contenedor de contenido de la sección -->
+</section> <!-- Fin de la sección de currículum -->
+
+
+    <!-- SECCION OBJETIVOS -->
+    <!-- Sección principal para el portafolio con ID "portfolio" y clase "portfolio" -->
+<section id="portfolio" class="portfolio">
+    <!-- Contenedor para todo el contenido de la sección -->
+    <div class="contenido-seccion">
+        <!-- Título de la sección "Objetivos" -->
+        <h2>Objetivos</h2>
+        
+        <!-- Contenedor para la galería de proyectos -->
+        <div class="galeria">
+            <!-- Proyecto para objetivos personales -->
+            <div class="proyecto" onclick="mostrarModal(['1. Mantener un equilibrio entre vida personal y laboral', 
+            '2. Desarrollar habilidades de gestión del tiempo',
+            '3. Fomentar el bienestar físico y mental',
+            '4. Ahorrar e invertir',
+            '5. Ampliar la red social y profesional', 
+            '6. Adquirir nuevas experiencias culturales', 
+            '7. Desarrollar habilidades de comunicación y liderazgo', 
+            '8. Aprender nuevas habilidades personales', 
+            '9. Cultivar un hobby o interés personal',
+            '10. Planificación a largo plazo'])"> <!-- Al hacer clic, se llama a la función mostrarModal con una lista de objetivos personales -->
+                <img src="img/201711171441530.fbfoto.webp" alt=""> <!-- Imagen representativa de los objetivos personales -->
+                <div class="overlay"> <!-- Superposición que aparece sobre la imagen -->
+                    <h3>Objetivos personales</h3> <!-- Título de la superposición -->
+                    <p>OP</p> <!-- Texto adicional, posiblemente un acrónimo o indicativo -->
+                </div>
+            </div>
+            
+            <!-- Proyecto para objetivos profesionales -->
+            <div class="proyecto" onclick="mostrarModal(['1. Conseguir un primer empleo en su campo de estudio',
+            '2. Mejorar habilidades técnica',
+            '3. Obtener certificaciones profesionales',
+            '4. Desarrollar una red profesional sólida',
+            '5. Aprender un nuevo idioma',
+            '6. Perfeccionar las habilidades de trabajo en equipo',
+            '7. Emprender un proyecto propio',
+            '8. Mejorar las habilidades de comunicación profesional',
+            '9. Buscar mentoría',
+            '10. Subir de nivel en la organización'])"> <!-- Al hacer clic, se llama a la función mostrarModal con una lista de objetivos profesionales -->
+                <img src="img/ejemplos-de-objetivos-profesionales-1024x576.webp" alt=""> <!-- Imagen representativa de los objetivos profesionales -->
+                <div class="overlay"> <!-- Superposición que aparece sobre la imagen -->
+                    <h3>Objetivos profesionales</h3> <!-- Título de la superposición -->
+                    <p>OP</p> <!-- Texto adicional, posiblemente un acrónimo o indicativo -->
+                </div>
+            </div>
+        </div> <!-- Fin del contenedor de la galería -->
+    </div> <!-- Fin del contenedor de contenido de la sección -->
+</section> <!-- Fin de la sección de portafolio -->
+
+    
+    <!-- Modal -->
+    <!-- Contenedor principal del modal con ID "modal" y clase "modal" -->
+<div id="modal" class="modal">
+    <!-- Contenedor interno del contenido del modal -->
+    <div class="modal-content">
+        <!-- Botón de cierre del modal, que llama a la función cerrarModal() al hacer clic -->
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        
+        <!-- Título del modal -->
+        <h2 class="modal-header">Objetivos</h2>
+        
+        <!-- Contenedor donde se mostrarán los objetivos dinámicamente -->
+        <div id="objetivos-container" class="objetivos-container"></div>
+    </div> <!-- Fin del contenedor del contenido del modal -->
+</div> <!-- Fin del contenedor principal del modal -->
+
+    
+    
+   
+    
+
+    <!-- SECCION CONTACTO -->
+    <!-- Sección de contacto con ID y clase "contacto" -->
+<section id="contacto" class="contacto">
+    <!-- Contenedor principal de la sección -->
+    <div class="contenido-seccion">
+        <!-- Título de la sección -->
+        <h2>CONTACTO</h2>
+        
+        <!-- Fila para contener el formulario -->
+        <div class="fila">
+            <!-- Columna para el formulario -->
+            <div id="contacto" class="col">
+                <!-- Formulario con ID "formContacto" -->
+                <form id="formContacto">
+                    <!-- Campo de texto para el nombre, obligatorio -->
+                    <input type="text" name="nombre" placeholder="Tú Nombre" required>
+                    
+                    <!-- Campo de texto para el número de teléfono, obligatorio -->
+                    <input type="text" name="telefono" placeholder="Número telefónico" required>
+                    
+                    <!-- Campo de texto para el correo electrónico, obligatorio -->
+                    <input type="email" name="correo" placeholder="Dirección de correo" required>
+                    
+                    <!-- Campo de texto para el tema del mensaje, obligatorio -->
+                    <input type="text" name="tema" placeholder="Tema" required>
+                    
+                    <!-- Área de texto para el mensaje, obligatorio -->
+                    <textarea name="mensaje" cols="30" rows="10" placeholder="Mensaje" required></textarea>
+                    
+                    <!-- Botón para enviar el mensaje -->
+                    <button type="submit">Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
+                        <span class="overlay"></span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="col">
+                <img src="img/Ubicacion.jpg" alt="">
+                <div class="info">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            Honduras 504, San Manuel, Cortes
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-mobile-screen"></i>
+                            Llamanos: 3356 - 3874 
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            Email: mejiajavi446@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <script>
+                // Escuchar el evento de envío del formulario
+                document.getElementById('formContacto').addEventListener('submit', function(event) {
+                    event.preventDefault();  // Evitar el comportamiento predeterminado de envío del formulario
+                
+                    // Obtener los datos del formulario
+                    const formData = new FormData(this);
+                
+                    // Enviar el formulario usando fetch
+                    fetch('procesar_contacto.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())  // Procesar la respuesta del servidor
+                    .then(data => {
+                        // Mostrar la ventana emergente de éxito
+                        alert("¡Mensaje enviado con éxito!");
+                
+                        // Mantener la página en la misma sección
+                        window.location.hash = '#contacto';
+                    })
+                    .catch(error => {
+                        // En caso de error, mostrar un mensaje en la consola
+                        console.error('Error al enviar el formulario:', error);
+                    });
+                });
+            </script>
+        </div> <!-- Fin de la fila -->
+    </div> <!-- Fin del contenedor principal -->
+</section> <!-- Fin de la sección de contacto -->
+
+
+
+    <!-- footer -->
+    <!-- Comienzo del pie de página -->
+<footer>
+    <!-- Enlace que lleva al inicio de la página -->
+    <a href="#inicio" class="arriba">
+        <!-- Ícono de flecha hacia arriba utilizando Font Awesome -->
+        <i class="fa-solid fa-angles-up"></i>
+    </a>
+    
+    <!-- Contenedor para los enlaces de redes sociales -->
+    <div class="redes">
+        <!-- Enlace a la página de Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=100051656882509&locale=es_LA">
+            <!-- Ícono de Facebook utilizando Font Awesome -->
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        
+        <!-- Enlace a la página de Instagram -->
+        <a href="https://www.instagram.com/javier_.m12/">
+            <!-- Ícono de Instagram utilizando Font Awesome -->
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+    </div> <!-- Fin del contenedor de redes sociales -->
+</footer> <!-- Fin del pie de página -->
+
+
+    <script src="script.js"></script>
+</body>
+</html>
